@@ -22,6 +22,7 @@ import type {
   LPCWSTR,
   LPDWORD,
   LPSTR,
+  NULL,
   LPVOID,
   LPWSTR,
   LSA_HANDLE,
@@ -1050,7 +1051,7 @@ class Advapi32 {
   }
 
   // https://learn.microsoft.com/en-us/windows/win32/api/securitybaseapi/nf-securitybaseapi-adjusttokenprivileges
-  public static AdjustTokenPrivileges(TokenHandle: HANDLE, DisableAllPrivileges: BOOL, NewState: PTOKEN_PRIVILEGES, BufferLength: DWORD, PreviousState: PTOKEN_PRIVILEGES, ReturnLength: LPDWORD): BOOL {
+  public static AdjustTokenPrivileges(TokenHandle: HANDLE, DisableAllPrivileges: BOOL, NewState: PTOKEN_PRIVILEGES, BufferLength: DWORD, PreviousState: PTOKEN_PRIVILEGES | NULL, ReturnLength: LPDWORD | NULL): BOOL {
     return Advapi32.Load('AdjustTokenPrivileges')(TokenHandle, DisableAllPrivileges, NewState, BufferLength, PreviousState, ReturnLength);
   }
 
@@ -2820,7 +2821,7 @@ class Advapi32 {
   }
 
   // https://learn.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-lookupprivilegevaluew
-  public static LookupPrivilegeValueW(lpSystemName: LPCWSTR, lpName: LPCWSTR, lpLuid: PVOID): BOOL {
+  public static LookupPrivilegeValueW(lpSystemName: LPCWSTR | NULL, lpName: LPCWSTR, lpLuid: PVOID): BOOL {
     return Advapi32.Load('LookupPrivilegeValueW')(lpSystemName, lpName, lpLuid);
   }
 

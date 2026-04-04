@@ -417,6 +417,7 @@ export enum WellKnownSidType {
 
 export type ACCESS_MASK = number;
 export type ALG_ID = number;
+export type NULL = null;
 export type AUDIT_EVENT_TYPE = number;
 export type BOOL = number;
 export type BYTE = number;
