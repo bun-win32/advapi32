@@ -156,8 +156,8 @@ class Advapi32 {
    * intended for direct use.
    */
   private static readonly Symbols = {
-    AbortSystemShutdownA: { args: [FFIType.ptr], returns: FFIType.i32 },
-    AbortSystemShutdownW: { args: [FFIType.ptr], returns: FFIType.i32 },
+    AbortSystemShutdownA: { args: [FFIType.u64], returns: FFIType.i32 },
+    AbortSystemShutdownW: { args: [FFIType.u64], returns: FFIType.i32 },
     AccessCheck: { args: [FFIType.ptr, FFIType.u64, FFIType.u32, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
     AccessCheckAndAuditAlarmA: { args: [FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.u32, FFIType.ptr, FFIType.i32, FFIType.ptr, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
     AccessCheckAndAuditAlarmW: { args: [FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.u32, FFIType.ptr, FFIType.i32, FFIType.ptr, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
@@ -182,8 +182,8 @@ class Advapi32 {
     AddConditionalAce: { args: [FFIType.ptr, FFIType.u32, FFIType.u32, FFIType.u8, FFIType.u32, FFIType.ptr, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
     AddUsersToEncryptedFile: { args: [FFIType.ptr, FFIType.ptr], returns: FFIType.u32 },
     AddUsersToEncryptedFileEx: { args: [FFIType.ptr, FFIType.u32, FFIType.ptr, FFIType.ptr], returns: FFIType.u32 },
-    AdjustTokenGroups: { args: [FFIType.u64, FFIType.i32, FFIType.ptr, FFIType.u32, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
-    AdjustTokenPrivileges: { args: [FFIType.u64, FFIType.i32, FFIType.ptr, FFIType.u32, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
+    AdjustTokenGroups: { args: [FFIType.u64, FFIType.i32, FFIType.ptr, FFIType.u32, FFIType.u64, FFIType.u64], returns: FFIType.i32 },
+    AdjustTokenPrivileges: { args: [FFIType.u64, FFIType.i32, FFIType.ptr, FFIType.u32, FFIType.u64, FFIType.u64], returns: FFIType.i32 },
     AllocateAndInitializeSid: { args: [FFIType.ptr, FFIType.u8, FFIType.u32, FFIType.u32, FFIType.u32, FFIType.u32, FFIType.u32, FFIType.u32, FFIType.u32, FFIType.u32, FFIType.ptr], returns: FFIType.i32 },
     AllocateLocallyUniqueId: { args: [FFIType.ptr], returns: FFIType.i32 },
     AreAllAccessesGranted: { args: [FFIType.u32, FFIType.u32], returns: FFIType.i32 },
@@ -303,8 +303,8 @@ class Advapi32 {
     CredDeleteA: { args: [FFIType.ptr, FFIType.u32, FFIType.u32], returns: FFIType.i32 },
     CredDeleteW: { args: [FFIType.ptr, FFIType.u32, FFIType.u32], returns: FFIType.i32 },
     CredEncryptAndMarshalBinaryBlob: { args: [FFIType.u32, FFIType.ptr, FFIType.u32, FFIType.ptr], returns: FFIType.i32 },
-    CredEnumerateA: { args: [FFIType.ptr, FFIType.u32, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
-    CredEnumerateW: { args: [FFIType.ptr, FFIType.u32, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
+    CredEnumerateA: { args: [FFIType.u64, FFIType.u32, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
+    CredEnumerateW: { args: [FFIType.u64, FFIType.u32, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
     CredFindBestCredentialA: { args: [FFIType.ptr, FFIType.u32, FFIType.u32, FFIType.ptr], returns: FFIType.i32 },
     CredFindBestCredentialW: { args: [FFIType.ptr, FFIType.u32, FFIType.u32, FFIType.ptr], returns: FFIType.i32 },
     CredFree: { args: [FFIType.ptr], returns: FFIType.void },
@@ -355,10 +355,10 @@ class Advapi32 {
     CryptDuplicateHash: { args: [FFIType.u64, FFIType.ptr, FFIType.u32, FFIType.ptr], returns: FFIType.i32 },
     CryptDuplicateKey: { args: [FFIType.u64, FFIType.ptr, FFIType.u32, FFIType.ptr], returns: FFIType.i32 },
     CryptEncrypt: { args: [FFIType.u64, FFIType.u64, FFIType.i32, FFIType.u32, FFIType.ptr, FFIType.ptr, FFIType.u32], returns: FFIType.i32 },
-    CryptEnumProviderTypesA: { args: [FFIType.u32, FFIType.ptr, FFIType.u32, FFIType.ptr, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
-    CryptEnumProviderTypesW: { args: [FFIType.u32, FFIType.ptr, FFIType.u32, FFIType.ptr, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
-    CryptEnumProvidersA: { args: [FFIType.u32, FFIType.ptr, FFIType.u32, FFIType.ptr, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
-    CryptEnumProvidersW: { args: [FFIType.u32, FFIType.ptr, FFIType.u32, FFIType.ptr, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
+    CryptEnumProviderTypesA: { args: [FFIType.u32, FFIType.u64, FFIType.u32, FFIType.ptr, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
+    CryptEnumProviderTypesW: { args: [FFIType.u32, FFIType.u64, FFIType.u32, FFIType.ptr, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
+    CryptEnumProvidersA: { args: [FFIType.u32, FFIType.u64, FFIType.u32, FFIType.ptr, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
+    CryptEnumProvidersW: { args: [FFIType.u32, FFIType.u64, FFIType.u32, FFIType.ptr, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
     CryptExportKey: { args: [FFIType.u64, FFIType.u64, FFIType.u32, FFIType.u32, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
     CryptGenKey: { args: [FFIType.u64, FFIType.u32, FFIType.u32, FFIType.ptr], returns: FFIType.i32 },
     CryptGenRandom: { args: [FFIType.u64, FFIType.u32, FFIType.ptr], returns: FFIType.i32 },
@@ -507,12 +507,12 @@ class Advapi32 {
     InitializeAcl: { args: [FFIType.ptr, FFIType.u32, FFIType.u32], returns: FFIType.i32 },
     InitializeSecurityDescriptor: { args: [FFIType.ptr, FFIType.u32], returns: FFIType.i32 },
     InitializeSid: { args: [FFIType.ptr, FFIType.ptr, FFIType.u8], returns: FFIType.i32 },
-    InitiateShutdownA: { args: [FFIType.ptr, FFIType.ptr, FFIType.u32, FFIType.u32, FFIType.u32], returns: FFIType.u32 },
-    InitiateShutdownW: { args: [FFIType.ptr, FFIType.ptr, FFIType.u32, FFIType.u32, FFIType.u32], returns: FFIType.u32 },
-    InitiateSystemShutdownA: { args: [FFIType.ptr, FFIType.ptr, FFIType.u32, FFIType.i32, FFIType.i32], returns: FFIType.i32 },
-    InitiateSystemShutdownExA: { args: [FFIType.ptr, FFIType.ptr, FFIType.u32, FFIType.i32, FFIType.i32, FFIType.u32], returns: FFIType.i32 },
-    InitiateSystemShutdownExW: { args: [FFIType.ptr, FFIType.ptr, FFIType.u32, FFIType.i32, FFIType.i32, FFIType.u32], returns: FFIType.i32 },
-    InitiateSystemShutdownW: { args: [FFIType.ptr, FFIType.ptr, FFIType.u32, FFIType.i32, FFIType.i32], returns: FFIType.i32 },
+    InitiateShutdownA: { args: [FFIType.u64, FFIType.u64, FFIType.u32, FFIType.u32, FFIType.u32], returns: FFIType.u32 },
+    InitiateShutdownW: { args: [FFIType.u64, FFIType.u64, FFIType.u32, FFIType.u32, FFIType.u32], returns: FFIType.u32 },
+    InitiateSystemShutdownA: { args: [FFIType.u64, FFIType.u64, FFIType.u32, FFIType.i32, FFIType.i32], returns: FFIType.i32 },
+    InitiateSystemShutdownExA: { args: [FFIType.u64, FFIType.u64, FFIType.u32, FFIType.i32, FFIType.i32, FFIType.u32], returns: FFIType.i32 },
+    InitiateSystemShutdownExW: { args: [FFIType.u64, FFIType.u64, FFIType.u32, FFIType.i32, FFIType.i32, FFIType.u32], returns: FFIType.i32 },
+    InitiateSystemShutdownW: { args: [FFIType.u64, FFIType.u64, FFIType.u32, FFIType.i32, FFIType.i32], returns: FFIType.i32 },
     InstallApplication: { args: [FFIType.ptr], returns: FFIType.u32 },
     IsTextUnicode: { args: [FFIType.ptr, FFIType.i32, FFIType.ptr], returns: FFIType.i32 },
     IsTokenRestricted: { args: [FFIType.u64], returns: FFIType.i32 },
@@ -528,16 +528,16 @@ class Advapi32 {
     LogonUserExExW: { args: [FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.u32, FFIType.u32, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
     LogonUserExW: { args: [FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.u32, FFIType.u32, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
     LogonUserW: { args: [FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.u32, FFIType.u32, FFIType.ptr], returns: FFIType.i32 },
-    LookupAccountNameA: { args: [FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
-    LookupAccountNameW: { args: [FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
-    LookupAccountSidA: { args: [FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
-    LookupAccountSidW: { args: [FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
-    LookupPrivilegeDisplayNameA: { args: [FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
-    LookupPrivilegeDisplayNameW: { args: [FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
-    LookupPrivilegeNameA: { args: [FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
-    LookupPrivilegeNameW: { args: [FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
-    LookupPrivilegeValueA: { args: [FFIType.ptr, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
-    LookupPrivilegeValueW: { args: [FFIType.ptr, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
+    LookupAccountNameA: { args: [FFIType.u64, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
+    LookupAccountNameW: { args: [FFIType.u64, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
+    LookupAccountSidA: { args: [FFIType.u64, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
+    LookupAccountSidW: { args: [FFIType.u64, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
+    LookupPrivilegeDisplayNameA: { args: [FFIType.u64, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
+    LookupPrivilegeDisplayNameW: { args: [FFIType.u64, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
+    LookupPrivilegeNameA: { args: [FFIType.u64, FFIType.ptr, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
+    LookupPrivilegeNameW: { args: [FFIType.u64, FFIType.ptr, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
+    LookupPrivilegeValueA: { args: [FFIType.u64, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
+    LookupPrivilegeValueW: { args: [FFIType.u64, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
     LookupSecurityDescriptorPartsA: { args: [FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr], returns: FFIType.u32 },
     LookupSecurityDescriptorPartsW: { args: [FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr], returns: FFIType.u32 },
     LsaAddAccountRights: { args: [FFIType.u64, FFIType.ptr, FFIType.ptr, FFIType.u32], returns: FFIType.i32 },
@@ -584,8 +584,8 @@ class Advapi32 {
     LsaManageSidNameMapping: { args: [FFIType.u32, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
     LsaNtStatusToWinError: { args: [FFIType.i32], returns: FFIType.u32 },
     LsaOpenAccount: { args: [FFIType.u64, FFIType.ptr, FFIType.u32, FFIType.ptr], returns: FFIType.i32 },
-    LsaOpenPolicy: { args: [FFIType.ptr, FFIType.ptr, FFIType.u32, FFIType.ptr], returns: FFIType.i32 },
-    LsaOpenPolicySce: { args: [FFIType.ptr, FFIType.ptr, FFIType.u32, FFIType.ptr], returns: FFIType.i32 },
+    LsaOpenPolicy: { args: [FFIType.u64, FFIType.ptr, FFIType.u32, FFIType.ptr], returns: FFIType.i32 },
+    LsaOpenPolicySce: { args: [FFIType.u64, FFIType.ptr, FFIType.u32, FFIType.ptr], returns: FFIType.i32 },
     LsaOpenSecret: { args: [FFIType.u64, FFIType.ptr, FFIType.u32, FFIType.ptr], returns: FFIType.i32 },
     LsaOpenTrustedDomain: { args: [FFIType.u64, FFIType.ptr, FFIType.u32, FFIType.ptr], returns: FFIType.i32 },
     LsaOpenTrustedDomainByName: { args: [FFIType.u64, FFIType.ptr, FFIType.u32, FFIType.ptr], returns: FFIType.i32 },
@@ -642,15 +642,15 @@ class Advapi32 {
     ObjectOpenAuditAlarmW: { args: [FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.u64, FFIType.u32, FFIType.u32, FFIType.ptr, FFIType.i32, FFIType.i32, FFIType.ptr], returns: FFIType.i32 },
     ObjectPrivilegeAuditAlarmA: { args: [FFIType.ptr, FFIType.ptr, FFIType.u64, FFIType.u32, FFIType.ptr, FFIType.i32], returns: FFIType.i32 },
     ObjectPrivilegeAuditAlarmW: { args: [FFIType.ptr, FFIType.ptr, FFIType.u64, FFIType.u32, FFIType.ptr, FFIType.i32], returns: FFIType.i32 },
-    OpenBackupEventLogA: { args: [FFIType.ptr, FFIType.ptr], returns: FFIType.u64 },
-    OpenBackupEventLogW: { args: [FFIType.ptr, FFIType.ptr], returns: FFIType.u64 },
+    OpenBackupEventLogA: { args: [FFIType.u64, FFIType.ptr], returns: FFIType.u64 },
+    OpenBackupEventLogW: { args: [FFIType.u64, FFIType.ptr], returns: FFIType.u64 },
     OpenEncryptedFileRawA: { args: [FFIType.ptr, FFIType.u32, FFIType.ptr], returns: FFIType.u32 },
     OpenEncryptedFileRawW: { args: [FFIType.ptr, FFIType.u32, FFIType.ptr], returns: FFIType.u32 },
-    OpenEventLogA: { args: [FFIType.ptr, FFIType.ptr], returns: FFIType.u64 },
-    OpenEventLogW: { args: [FFIType.ptr, FFIType.ptr], returns: FFIType.u64 },
+    OpenEventLogA: { args: [FFIType.u64, FFIType.ptr], returns: FFIType.u64 },
+    OpenEventLogW: { args: [FFIType.u64, FFIType.ptr], returns: FFIType.u64 },
     OpenProcessToken: { args: [FFIType.u64, FFIType.u32, FFIType.ptr], returns: FFIType.i32 },
-    OpenSCManagerA: { args: [FFIType.ptr, FFIType.ptr, FFIType.u32], returns: FFIType.u64 },
-    OpenSCManagerW: { args: [FFIType.ptr, FFIType.ptr, FFIType.u32], returns: FFIType.u64 },
+    OpenSCManagerA: { args: [FFIType.u64, FFIType.u64, FFIType.u32], returns: FFIType.u64 },
+    OpenSCManagerW: { args: [FFIType.u64, FFIType.u64, FFIType.u32], returns: FFIType.u64 },
     OpenServiceA: { args: [FFIType.u64, FFIType.ptr, FFIType.u32], returns: FFIType.u64 },
     OpenServiceW: { args: [FFIType.u64, FFIType.ptr, FFIType.u32], returns: FFIType.u64 },
     OpenThreadToken: { args: [FFIType.u64, FFIType.u32, FFIType.i32, FFIType.ptr], returns: FFIType.i32 },
@@ -705,10 +705,10 @@ class Advapi32 {
     ReadEventLogA: { args: [FFIType.u64, FFIType.u32, FFIType.u32, FFIType.ptr, FFIType.u32, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
     ReadEventLogW: { args: [FFIType.u64, FFIType.u32, FFIType.u32, FFIType.ptr, FFIType.u32, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
     RegCloseKey: { args: [FFIType.u64], returns: FFIType.i32 },
-    RegConnectRegistryA: { args: [FFIType.ptr, FFIType.u64, FFIType.ptr], returns: FFIType.i32 },
-    RegConnectRegistryExA: { args: [FFIType.ptr, FFIType.u64, FFIType.u32, FFIType.ptr], returns: FFIType.i32 },
-    RegConnectRegistryExW: { args: [FFIType.ptr, FFIType.u64, FFIType.u32, FFIType.ptr], returns: FFIType.i32 },
-    RegConnectRegistryW: { args: [FFIType.ptr, FFIType.u64, FFIType.ptr], returns: FFIType.i32 },
+    RegConnectRegistryA: { args: [FFIType.u64, FFIType.u64, FFIType.ptr], returns: FFIType.i32 },
+    RegConnectRegistryExA: { args: [FFIType.u64, FFIType.u64, FFIType.u32, FFIType.ptr], returns: FFIType.i32 },
+    RegConnectRegistryExW: { args: [FFIType.u64, FFIType.u64, FFIType.u32, FFIType.ptr], returns: FFIType.i32 },
+    RegConnectRegistryW: { args: [FFIType.u64, FFIType.u64, FFIType.ptr], returns: FFIType.i32 },
     RegCopyTreeA: { args: [FFIType.u64, FFIType.ptr, FFIType.u64], returns: FFIType.i32 },
     RegCopyTreeW: { args: [FFIType.u64, FFIType.ptr, FFIType.u64], returns: FFIType.i32 },
     RegCreateKeyA: { args: [FFIType.u64, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
@@ -737,8 +737,8 @@ class Advapi32 {
     RegEnumKeyExA: { args: [FFIType.u64, FFIType.u32, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
     RegEnumKeyExW: { args: [FFIType.u64, FFIType.u32, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
     RegEnumKeyW: { args: [FFIType.u64, FFIType.u32, FFIType.ptr, FFIType.u32], returns: FFIType.i32 },
-    RegEnumValueA: { args: [FFIType.u64, FFIType.u32, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
-    RegEnumValueW: { args: [FFIType.u64, FFIType.u32, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
+    RegEnumValueA: { args: [FFIType.u64, FFIType.u32, FFIType.ptr, FFIType.ptr, FFIType.u64, FFIType.ptr, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
+    RegEnumValueW: { args: [FFIType.u64, FFIType.u32, FFIType.ptr, FFIType.ptr, FFIType.u64, FFIType.ptr, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
     RegFlushKey: { args: [FFIType.u64], returns: FFIType.i32 },
     RegGetKeySecurity: { args: [FFIType.u64, FFIType.u32, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
     RegGetValueA: { args: [FFIType.u64, FFIType.ptr, FFIType.ptr, FFIType.u32, FFIType.ptr, FFIType.ptr, FFIType.ptr], returns: FFIType.i32 },
@@ -786,8 +786,8 @@ class Advapi32 {
     RegSetValueW: { args: [FFIType.u64, FFIType.ptr, FFIType.u32, FFIType.ptr, FFIType.u32], returns: FFIType.i32 },
     RegUnLoadKeyA: { args: [FFIType.u64, FFIType.ptr], returns: FFIType.i32 },
     RegUnLoadKeyW: { args: [FFIType.u64, FFIType.ptr], returns: FFIType.i32 },
-    RegisterEventSourceA: { args: [FFIType.ptr, FFIType.ptr], returns: FFIType.u64 },
-    RegisterEventSourceW: { args: [FFIType.ptr, FFIType.ptr], returns: FFIType.u64 },
+    RegisterEventSourceA: { args: [FFIType.u64, FFIType.ptr], returns: FFIType.u64 },
+    RegisterEventSourceW: { args: [FFIType.u64, FFIType.ptr], returns: FFIType.u64 },
     RegisterIdleTask: { args: [FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr], returns: FFIType.u32 },
     RegisterServiceCtrlHandlerA: { args: [FFIType.ptr, FFIType.ptr], returns: FFIType.u64 },
     RegisterServiceCtrlHandlerExA: { args: [FFIType.ptr, FFIType.ptr, FFIType.ptr], returns: FFIType.u64 },
@@ -842,11 +842,11 @@ class Advapi32 {
     SetPrivateObjectSecurityEx: { args: [FFIType.u32, FFIType.ptr, FFIType.ptr, FFIType.u32, FFIType.ptr, FFIType.u64], returns: FFIType.i32 },
     SetSecurityAccessMask: { args: [FFIType.u32, FFIType.ptr], returns: FFIType.void },
     SetSecurityDescriptorControl: { args: [FFIType.ptr, FFIType.u16, FFIType.u16], returns: FFIType.i32 },
-    SetSecurityDescriptorDacl: { args: [FFIType.ptr, FFIType.i32, FFIType.ptr, FFIType.i32], returns: FFIType.i32 },
-    SetSecurityDescriptorGroup: { args: [FFIType.ptr, FFIType.ptr, FFIType.i32], returns: FFIType.i32 },
-    SetSecurityDescriptorOwner: { args: [FFIType.ptr, FFIType.ptr, FFIType.i32], returns: FFIType.i32 },
+    SetSecurityDescriptorDacl: { args: [FFIType.ptr, FFIType.i32, FFIType.u64, FFIType.i32], returns: FFIType.i32 },
+    SetSecurityDescriptorGroup: { args: [FFIType.ptr, FFIType.u64, FFIType.i32], returns: FFIType.i32 },
+    SetSecurityDescriptorOwner: { args: [FFIType.ptr, FFIType.u64, FFIType.i32], returns: FFIType.i32 },
     SetSecurityDescriptorRMControl: { args: [FFIType.ptr, FFIType.ptr], returns: FFIType.u32 },
-    SetSecurityDescriptorSacl: { args: [FFIType.ptr, FFIType.i32, FFIType.ptr, FFIType.i32], returns: FFIType.i32 },
+    SetSecurityDescriptorSacl: { args: [FFIType.ptr, FFIType.i32, FFIType.u64, FFIType.i32], returns: FFIType.i32 },
     SetSecurityInfo: { args: [FFIType.u64, FFIType.u32, FFIType.u32, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr], returns: FFIType.u32 },
     SetSecurityInfoExA: { args: [FFIType.u64, FFIType.u32, FFIType.u32, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr], returns: FFIType.u32 },
     SetSecurityInfoExW: { args: [FFIType.u64, FFIType.u32, FFIType.u32, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr, FFIType.ptr], returns: FFIType.u32 },
@@ -915,12 +915,12 @@ class Advapi32 {
   } as const satisfies Record<string, FFIFunction>;
 
   // https://learn.microsoft.com/en-us/windows/win32/api/winreg/nf-winreg-abortsystemshutdowna
-  public static AbortSystemShutdownA(lpMachineName: LPSTR): BOOL {
+  public static AbortSystemShutdownA(lpMachineName: LPCSTR): BOOL {
     return Advapi32.Load('AbortSystemShutdownA')(lpMachineName);
   }
 
   // https://learn.microsoft.com/en-us/windows/win32/api/winreg/nf-winreg-abortsystemshutdownw
-  public static AbortSystemShutdownW(lpMachineName: LPWSTR): BOOL {
+  public static AbortSystemShutdownW(lpMachineName: LPCWSTR): BOOL {
     return Advapi32.Load('AbortSystemShutdownW')(lpMachineName);
   }
 
@@ -1910,22 +1910,22 @@ class Advapi32 {
   }
 
   // https://learn.microsoft.com/en-us/windows/win32/api/wincrypt/nf-wincrypt-cryptenumprovidertypesa
-  public static CryptEnumProviderTypesA(dwIndex: DWORD, pdwReserved: LPDWORD, dwFlags: DWORD, pdwProvType: LPDWORD, szTypeName: LPSTR, pcbTypeName: LPDWORD): BOOL {
+  public static CryptEnumProviderTypesA(dwIndex: DWORD, pdwReserved: PDWORD, dwFlags: DWORD, pdwProvType: LPDWORD, szTypeName: LPSTR, pcbTypeName: LPDWORD): BOOL {
     return Advapi32.Load('CryptEnumProviderTypesA')(dwIndex, pdwReserved, dwFlags, pdwProvType, szTypeName, pcbTypeName);
   }
 
   // https://learn.microsoft.com/en-us/windows/win32/api/wincrypt/nf-wincrypt-cryptenumprovidertypesw
-  public static CryptEnumProviderTypesW(dwIndex: DWORD, pdwReserved: LPDWORD, dwFlags: DWORD, pdwProvType: LPDWORD, szTypeName: LPWSTR, pcbTypeName: LPDWORD): BOOL {
+  public static CryptEnumProviderTypesW(dwIndex: DWORD, pdwReserved: PDWORD, dwFlags: DWORD, pdwProvType: LPDWORD, szTypeName: LPWSTR, pcbTypeName: LPDWORD): BOOL {
     return Advapi32.Load('CryptEnumProviderTypesW')(dwIndex, pdwReserved, dwFlags, pdwProvType, szTypeName, pcbTypeName);
   }
 
   // https://learn.microsoft.com/en-us/windows/win32/api/wincrypt/nf-wincrypt-cryptenumprovidersa
-  public static CryptEnumProvidersA(dwIndex: DWORD, pdwReserved: LPDWORD, dwFlags: DWORD, pdwProvType: LPDWORD, szProvName: LPSTR, pcbProvName: LPDWORD): BOOL {
+  public static CryptEnumProvidersA(dwIndex: DWORD, pdwReserved: PDWORD, dwFlags: DWORD, pdwProvType: LPDWORD, szProvName: LPSTR, pcbProvName: LPDWORD): BOOL {
     return Advapi32.Load('CryptEnumProvidersA')(dwIndex, pdwReserved, dwFlags, pdwProvType, szProvName, pcbProvName);
   }
 
   // https://learn.microsoft.com/en-us/windows/win32/api/wincrypt/nf-wincrypt-cryptenumprovidersw
-  public static CryptEnumProvidersW(dwIndex: DWORD, pdwReserved: LPDWORD, dwFlags: DWORD, pdwProvType: LPDWORD, szProvName: LPWSTR, pcbProvName: LPDWORD): BOOL {
+  public static CryptEnumProvidersW(dwIndex: DWORD, pdwReserved: PDWORD, dwFlags: DWORD, pdwProvType: LPDWORD, szProvName: LPWSTR, pcbProvName: LPDWORD): BOOL {
     return Advapi32.Load('CryptEnumProvidersW')(dwIndex, pdwReserved, dwFlags, pdwProvType, szProvName, pcbProvName);
   }
 
