@@ -1,10 +1,12 @@
-# bun-advapi32
+# @bun-win32/advapi32
 
 Zero-dependency, zero-overhead Win32 Advapi32 bindings for [Bun](https://bun.sh) on Windows.
 
 ## Overview
 
-`bun-advapi32` exposes the `advapi32.dll` exports using Bun's FFI. It provides a single class, `Advapi32`, which lazily binds native symbols on first use. You can optionally preload a subset or all symbols up-front via `Preload()`.
+`@bun-win32/advapi32` exposes the `advapi32.dll` exports using [Bun](https://bun.sh)'s FFI. It provides a single class, `Advapi32`, which lazily binds native symbols on first use. You can optionally preload a subset or all symbols up-front via `Preload()`.
+
+The bindings are strongly typed for a smooth DX in TypeScript.
 
 ## Features
 
@@ -23,13 +25,13 @@ Zero-dependency, zero-overhead Win32 Advapi32 bindings for [Bun](https://bun.sh)
 ## Installation
 
 ```sh
-bun add bun-advapi32
+bun add @bun-win32/advapi32
 ```
 
 ## Quick Start
 
 ```ts
-import Advapi32, { HKEY_LOCAL_MACHINE } from 'bun-advapi32';
+import Advapi32, { HKEY_LOCAL_MACHINE } from '@bun-win32/advapi32';
 
 // Optionally bind a subset up-front
 Advapi32.Preload(['GetUserNameW', 'RegOpenKeyExW', 'RegCloseKey']);
@@ -46,7 +48,7 @@ console.log('User: %s', username);
 
 ## Examples
 
-Run the included example to see the library in action:
+Run the included examples:
 
 ```sh
 bun run example              # Registry, username, and privilege lookups
